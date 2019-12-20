@@ -1,35 +1,14 @@
-package com.ibsu.demo.Entities;
+package com.ibsu.demo.dto;
 
-import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-@Table(name = "EMPLOYEES")
-public class Employee {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EMPLOYEES_SEQ")
-    @SequenceGenerator(name = "EMPLOYEES_SEQ", sequenceName = "EMPLOYEES_SEQ", allocationSize = 1)
-    @Column(name = "EMPLOYEE_ID")
+public class AddEditEmployee {
     private Long employeeId;
-    @Column(name = "FIRST_NAME")
     private String firstName;
-    @Column(name = "LAST_NAME")
     private String lastName;
-    @Column(name = "HIRE_DATE")
     private Date hireDate;
-    @Column(name = "SALARY")
     private Double salary;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "DEPARTMENT_ID")
-    private Department department;
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
+    private Long departmentId;
 
     public Long getEmployeeId() {
         return employeeId;
@@ -69,5 +48,13 @@ public class Employee {
 
     public void setSalary(Double salary) {
         this.salary = salary;
+    }
+
+    public Long getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(Long departmentId) {
+        this.departmentId = departmentId;
     }
 }
